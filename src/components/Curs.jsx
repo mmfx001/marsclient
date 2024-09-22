@@ -3,6 +3,10 @@ import React from 'react';
 const Curs = () => {
     return (
         <div className="container mx-auto py-6">
+                    {/* Profile Section */}  <h2 className="text-4xl ml-[-880px] mb-8 mt-5 text-left flex justify-center items-center  text-[#100D5D] gap-4 font-extrabold  font-poppins">
+                    <img className='w-12 mt-8' src="https://images.vexels.com/content/158669/preview/notebook-illustration-laptop-f57f36.png" alt="" />
+                        <p className='text-4xl mt-8 font-extrabold'>Kurslar</p>
+                    </h2>
             <div className="carousel carousel-end rounded-box space-x-11">
                 {/* Slide 1 */}
                 <div className="bg-white rounded-lg shadow-md p-4 w-60 flex flex-col  items-center">

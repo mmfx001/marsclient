@@ -30,9 +30,9 @@ const Learning = () => {
 
     return (
         
-        <div className='px-[130px] h-[100vh] w-full'>
+        <div className=' h-[100vh] w-full'>
             <Header/>
-            <div className='flex gap-[300px]'>
+            <div className='flex gap-[300px] w-full px-36'>
                 <strong className='flex gap-[300px]'>
                     <h1 className='text-[30px] text-[#0E0D5D] mt-2'>Modul</h1>
                     <p className='text-[33px] text-[#0E0D5D] mt-2'>Vazifa</p>
@@ -40,7 +40,7 @@ const Learning = () => {
             </div>
 
             {userData ? (
-                <div className='flex'>
+                <div className='flex px-36'>
                     <div className='bg-white rounded-[10px] py-[10px] w-[380px] flex flex-col items-center shadow-lg'>
                         {userData.tasks.map((task) => (
                             <div key={task.id}>

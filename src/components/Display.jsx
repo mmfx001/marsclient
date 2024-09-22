@@ -57,7 +57,7 @@ const Display = () => {
                 setUsers(response.data || []);
 
                 if (loggedInUser) {
-                    const user = response.data.find((u) => u.email === loggedInUser.email);
+                    const user = response.data.find((u) => u.name === loggedInUser.name);
                     if (user) {
                         const userLikedItems = user.likeItems || [];
                         const updatedLikedStates = { ...likedStates };
@@ -80,48 +80,59 @@ const Display = () => {
             alert('Mahsulotlarni yoqtirish uchun tizimga kiring.');
             return;
         }
-
-        const user = users.find((user) => user.email === loggedInUser.email);
+    
+        const user = users.find((user) => user.name === loggedInUser.name); // Correct the name typo
         if (!user) {
             console.error('Foydalanuvchi topilmadi.');
             return;
         }
-
+    
+        // Check if the product is already liked by the user
         const isProductLiked = likedStates[item.id];
+    
+        // Update liked items for the user in `students` JSON
         const updatedLikedItems = isProductLiked
-            ? user.likeItems.filter((i) => i !== item.id)
-            : [...(user.likeItems || []), item.id];
-
-        const updatedUser = {
-            ...user,
-            likeItems: updatedLikedItems,
-        };
-
+            ? user.likeItems.filter((i) => i !== item.id)  // Remove item if already liked
+            : [...(user.likeItems || []), item.id];        // Add item if not already liked
+    
+        // Update the like count in the `posts` JSON
         const updatedItem = {
             ...item,
-            likeCount: isProductLiked ? item.likeCount - 1 : item.likeCount + 1,
+            likeCount: isProductLiked ? item.likeCount - 1 : item.likeCount + 1, // Increment or decrement like count
         };
-
+    
+        // Update the user and post data on the server
         try {
-            await axios.put(`http://localhost:5001/students/${user.id}`, updatedUser);
-            await axios.put(`http://localhost:5001/posts/${item.id}`, updatedItem);            setUsers((prevUsers) =>
+            // Update the student's liked items
+            await axios.put(`http://localhost:5001/students/${user.id}`, {
+                ...user,
+                likeItems: updatedLikedItems,
+            });
+    
+            // Update the post's like count
+            await axios.put(`http://localhost:5001/posts/${item.id}`, updatedItem);
+    
+            // Update local state for users and posts
+            setUsers((prevUsers) =>
                 prevUsers.map((u) =>
-                    u.email === loggedInUser.email ? updatedUser : u
+                    u.name === loggedInUser.name ? { ...u, likeItems: updatedLikedItems } : u
                 )
             );
-
+    
             setData((prevData) =>
                 prevData.map((p) => (p.id === item.id ? updatedItem : p))
             );
-
+    
+            // Update the local liked states
             setLikedStates((prevStates) => ({
                 ...prevStates,
-                [item.id]: !isProductLiked,
+                [item.id]: !isProductLiked,  // Toggle the liked state
             }));
         } catch (error) {
             console.error('Yoqtirilgan narsalarni yangilashda xatolik:', error);
         }
     };
+    
 
     const handleCardClick = (product) => {
         setSelectedProduct(product);

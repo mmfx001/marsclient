@@ -36,7 +36,7 @@ const Users = () => {
     };
 
     return (
-        <div className="container px-8 py-12 gap-6 ">
+        <div className="container mt-12 px-2 gap-6 ">
             {/* Profile Section */}  <h2 className="text-4xl flex justify-center items-center  text-[#100D5D] gap-4 font-extrabold mt-[-50px] text-center font-poppins">
                 <img className='w-12 mt-8' src="https://space.marsit.uz/img/profile_logo.8dfe14fc.png" alt="" />
                 <p className='text-4xl mt-8 font-extrabold'>Profil</p>
@@ -72,7 +72,7 @@ const Users = () => {
                         <p className="text-lg text-gray-500">Loading...</p>
                     )}
                 </div>                {/* Attendance Section */}
-                <div className="p-6 rounded-lg my-6 text-center shadow-md flex flex-col">
+                <div className="px-6 rounded-lg text-center mt-2 py-4 shadow-md flex flex-col">
                     <div className='flex gap-4'>
                         <img className='w-20' src="https://lab.marsit.uz/media/badges/50x%20Davomat/Artboard_1_KysZgAG.png" alt="" />
                         <div className='flex flex-col'>
@@ -89,9 +89,7 @@ const Users = () => {
                         className="w-full mt-4 accent-orange-500 appearance-none h-2 rounded-lg bg-gray-300 cursor-pointer"
                         style={{ background: `linear-gradient(to right, #ff9900 ${attendance / 150 * 100}%, #e0e0e0 ${attendance / 150 * 100}%)` }}
                     />
-                    <div className="flex justify-between items-center mt-4">
-                        <Link to="/details" className="text-white text-lg">Batafsil</Link>
-                    </div>
+                  
                 </div>
 
                 {/* Learning with Games Section */}
@@ -100,7 +98,7 @@ const Users = () => {
                     <div className="flex flex-col gap-6">
                         <a href='https://typing-test-sable.vercel.app/' className="flex flex-col items-center">
                             <img
-                                className='w-[160px] h-[150px] rounded-2xl transition-transform duration-300 hover:scale-105'
+                                className='w-[140px] h-[130px] rounded-2xl transition-transform duration-300 hover:scale-105'
                                 src="https://play-lh.googleusercontent.com/vqcumNluBRJ95zplaIUkBcOAyCSzu3_HsPcT_viEc33pjOWZLnxH_QVOywoSdojcXg"
                                 alt="Typing Game"
                             />
@@ -109,7 +107,7 @@ const Users = () => {
                         <hr />
                         <a href='https://siennameow.github.io/Code-Quiz/' className="flex flex-col items-center">
                             <img
-                                className='w-[160px] h-[150px] rounded-2xl transition-transform duration-300 hover:scale-105'
+                                className='w-[140px] h-[130px] rounded-2xl transition-transform duration-300 hover:scale-105'
                                 src="https://exec.mit.edu/file-asset/QUE_stock_image?v=1"
                                 alt="Question Game"
                             />
@@ -118,7 +116,7 @@ const Users = () => {
                         <hr />
                         <a target='blank' href="https://coins-ts-git-final-version-ai-ahmads-projects.vercel.app/" className='flex flex-col items-center'>
                             <img
-                                className='w-[160px] h-[150px] rounded-2xl transition-transform duration-300 hover:scale-105'
+                                className='w-[140px] h-[130px] rounded-2xl transition-transform duration-300 hover:scale-105'
                                 src="https://cdn-icons-png.flaticon.com/512/3924/3924426.png"
                                 alt="MarsCoin Game"
                             />

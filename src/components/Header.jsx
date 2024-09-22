@@ -92,7 +92,9 @@ const Header = ({ setLoggedInUser }) => {
                                     onClick={handleLogout}
                                     className="bg-red-500 hover:bg-red-600 text-white flex justify-center items-center px-4 py-2 rounded mt-4 w-full font-semibold transition duration-300"
                                 >
+                                    <Link className='flex items-center' to='/'>
                                     <FaSignOutAlt className="mr-2" /> Logout
+                                    </Link>
                                 </button>
                             </div>
                         )}

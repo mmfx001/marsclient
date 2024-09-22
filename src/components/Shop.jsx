@@ -56,7 +56,7 @@ const Shop = () => {
       .then(() => {
         userData.balance = newBalance;
         localStorage.setItem('loggedInUser', JSON.stringify(userData));
-        alert(`${product.name} has been purchased!`);
+ 
       })
       .catch((error) => {
         console.error('Error updating balance:', error);

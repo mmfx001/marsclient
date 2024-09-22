@@ -75,7 +75,7 @@ const Task = ({ task }) => {
 
   return (
     <div>
-      <div className='flex gap-[20px]'>
+      <div className='flex gap-[20px] w-full'>
         <div className='w-[430px] bg-white p-[15px] rounded-[10px]'>
           <b>
             <p className='bg-[#E0F6FF] w-[87px] text-center text-[#00A9F1] rounded-[7px] text-[11px]'>О задаче</p>
