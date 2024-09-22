@@ -63,8 +63,8 @@ const App = () => {
                             <div className="bg-gray-200 p-2 rounded-lg my-6">
                                 <div className='bg-orange-600 p-4 rounded-lg w-full text-white flex justify-between items-center'>
                                     <div className='flex items-center'>
-                                        <FaCoins className='text-yellow-400 text-2xl' />
-                                        <p className='text-xl font-bold'>{loggedInUser.coins}</p>
+                                        <FaCoins className='text-yellow-400 text-2x gap-2' />
+                                        <p className='text-xl font-bold ml-2'>{loggedInUser.balance}</p>
                                     </div>
                                     <div className='flex items-center'>
                                         <img className='w-10 mr-2' src="https://space.marsit.uz/img/XP.2c530ff3.svg" alt="XP" />
@@ -80,7 +80,7 @@ const App = () => {
                 {/* Attendance Section */}
                 <div className="p-6 rounded-lg my-6 text-center shadow-md flex flex-col">
                     <div className='flex gap-4'>
-                        <img className='w-20' src="https://lab.marsit.uz/media/badges/50x%20Davomat/Artboard_1_KysZgAG.png" alt="" />
+                        <img className='w-20 h-20' src="https://lab.marsit.uz/media/badges/50x%20Davomat/Artboard_1_KysZgAG.png" alt="" />
                         <div className='flex flex-col'>
                             <h4 className="text-xl font-bold mb-2 flex">{attendance}x Davomat</h4>
                             <p className="text-sm text-gray-600 text-left">150 ta dars qoldirmasdan darslarda qatnashish</p>
@@ -106,7 +106,7 @@ const App = () => {
                     <div className="flex flex-col gap-6">
                         <a href='https://typing-test-sable.vercel.app/' className="flex flex-col items-center">
                             <img
-                                className='w-[160px] h-[150px] rounded-2xl transition-transform duration-300 hover:scale-105'
+                                className='w-[120px] h-[110px] rounded-2xl transition-transform duration-300 hover:scale-105'
                                 src="https://play-lh.googleusercontent.com/vqcumNluBRJ95zplaIUkBcOAyCSzu3_HsPcT_viEc33pjOWZLnxH_QVOywoSdojcXg"
                                 alt="Typing Game"
                             />
@@ -115,7 +115,7 @@ const App = () => {
                         <hr />
                         <a href='https://siennameow.github.io/Code-Quiz/' className="flex flex-col items-center">
                             <img
-                                className='w-[160px] h-[150px] rounded-2xl transition-transform duration-300 hover:scale-105'
+                                className='w-[120px] h-[110px] rounded-2xl transition-transform duration-300 hover:scale-105'
                                 src="https://exec.mit.edu/file-asset/QUE_stock_image?v=1"
                                 alt="Question Game"
                             />
@@ -124,7 +124,7 @@ const App = () => {
                         <hr />
                         <a target='blank' href="https://coins-ts-git-final-version-ai-ahmads-projects.vercel.app/" className='flex flex-col items-center'>
                             <img
-                                className='w-[160px] h-[150px] rounded-2xl transition-transform duration-300 hover:scale-105'
+                                className='w-[120px] h-[110px] rounded-2xl transition-transform duration-300 hover:scale-105'
                                 src="https://cdn-icons-png.flaticon.com/512/3924/3924426.png"
                                 alt="MarsCoin Game"
                             />

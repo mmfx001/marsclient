@@ -34,7 +34,7 @@ const RatingPage = () => {
     const getStudentsByLeague = (league) => {
         return oquvchi
             .filter((student) => student.league.toLowerCase() === league.toLowerCase())
-            .sort((a, b) => b.coins - a.coins);
+            .sort((a, b) => b.balance - a.balance);
     };
 
     return (
@@ -104,7 +104,7 @@ const RatingPage = () => {
                                                 <p className="text-gray-600">League: {student.league}</p>
                                                 <p>Front | {student.group}</p>
                                             </div>
-                                            <p className="flex mt-7 gap-1 text-gray-600">{student.coins} <img className='w-6 h-5 mt-0.5' src="https://space.marsit.uz/img/Coin.8a6f0644.svg" alt="" /></p>
+                                            <p className="flex mt-7 gap-1 text-gray-600">{student.balance} <img className='w-6 h-5 mt-0.5' src="https://space.marsit.uz/img/Coin.8a6f0644.svg" alt="" /></p>
                                         </div>
                                     </div>
                                 ))}
@@ -143,7 +143,7 @@ const LeagueBlock = ({ title, students }) => (
                         <p className='text-sm'>{student.group} | {student.teacher || 'N/A'}</p>
                     </div>
                     <div className={`font-bold ${index === 0 ? 'text-white' : 'text-orange-500'} flex items-center`}>
-                        {student.coins} <img src="https://space.marsit.uz/img/Coin.8a6f0644.svg" alt="coin" className="ml-1 w-5 h-5" />
+                        {student.balance} <img src="https://space.marsit.uz/img/Coin.8a6f0644.svg" alt="coin" className="ml-1 w-5 h-5" />
                     </div>
                 </li>
             ))}

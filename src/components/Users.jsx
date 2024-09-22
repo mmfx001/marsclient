@@ -59,7 +59,7 @@ const Users = () => {
                                 <div className='bg-orange-600 p-4 rounded-lg text-white flex justify-between items-center'>
                                     <div className='flex items-center'>
                                         <FaCoins className='text-yellow-400 text-3xl mr-2' />
-                                        <p className='text-3xl font-bold'>{loggedInUser.coins}</p>
+                                        <p className='text-3xl font-bold'>{loggedInUser.balance}</p>
                                     </div>
                                     <div className='flex items-center'>
                                         <img className='w-10 mr-2' src="https://space.marsit.uz/img/XP.2c530ff3.svg" alt="XP" />
