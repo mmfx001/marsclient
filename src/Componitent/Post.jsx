@@ -55,7 +55,7 @@ const Post = () => {
     setImage(null);
     setImageUrl(''); // Ensure this is reset
     setModalOpen(false);
-    navigate('/main');
+    navigate('/');
   };
 
   const handleFileChange = (e) => {
@@ -64,12 +64,13 @@ const Post = () => {
     setPostMethod('file'); // Change method to file
   };
 
-
   const handleUrlChange = (e) => {
     setImageUrl(e.target.value);
     setImage(null); // Clear file field
     setPostMethod('url'); // Change method to URL
-  };  return (
+  };
+
+  return (
     isModalOpen && (
       <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
         <form onSubmit={handleSubmit} className="bg-white p-8 rounded-lg shadow-lg w-11/12 max-w-md">

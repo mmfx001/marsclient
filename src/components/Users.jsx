@@ -36,7 +36,7 @@ const Users = () => {
     };
 
     return (
-        <div className="container mt-12 px-2 gap-6 ">
+        <div className="container mt-12 px-2 gap-6 max-sm:flex max-sm:flex-col max-sm:items-center">
             {/* Profile Section */}  <h2 className="text-4xl flex justify-center items-center  text-[#100D5D] gap-4 font-extrabold mt-[-50px] text-center font-poppins">
                 <img className='w-12 mt-8' src="https://space.marsit.uz/img/profile_logo.8dfe14fc.png" alt="" />
                 <p className='text-4xl mt-8 font-extrabold'>Profil</p>
@@ -74,7 +74,8 @@ const Users = () => {
                 </div>                {/* Attendance Section */}
                 <div className="px-6 rounded-lg text-center mt-2 py-4 shadow-md flex flex-col">
                     <div className='flex gap-4'>
-                        <img className='w-20' src="https://lab.marsit.uz/media/badges/50x%20Davomat/Artboard_1_KysZgAG.png" alt="" />
+
+                    <img className='w-20' src="https://lab.marsit.uz/media/badges/50x%20Davomat/Artboard_1_KysZgAG.png" alt="" />
                         <div className='flex flex-col'>
                             <h4 className="text-2xl font-bold mb-2 flex">{attendance}x Davomat</h4>
                             <p className="text-sm text-gray-600 text-left">150 ta dars qoldirmasdan darslarda qatnashish</p>

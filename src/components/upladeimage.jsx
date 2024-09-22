@@ -2,14 +2,14 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-const Post = () => {
+const Upladeimg = () => {
   const [comment, setComment] = useState('');
   const [image, setImage] = useState(null);
-  const [imageUrl, setImageUrl] = useState(''); // Make sure this is always a string
+  const [imageUrl, setImageUrl] = useState('');
   const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
   const loggedInUserName = loggedInUser?.name || loggedInUser?.ism;
   const [isModalOpen, setModalOpen] = useState(true);
-  const [postMethod, setPostMethod] = useState('url'); // Default method: URL
+  const [postMethod, setPostMethod] = useState('url');
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -23,17 +23,28 @@ const Post = () => {
     const now = new Date();
     const timestamp = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
 
-    const postData = {
-      comment,
-      name: loggedInUserName,
-      likeCount: 0,
-      timestamp,
-      image: postMethod === 'file' ? await convertImageToBase64(image) : imageUrl,
-    };
+    // Determine the image source based on the post method
+    const imageSource = postMethod === 'file' ? await convertImageToBase64(image) : imageUrl;
 
     try {
-      const response = await axios.post('http://localhost:5001/posts', postData);
-      console.log(response.data);
+      // Check if the student has an existing entry
+      const studentResponse = await axios.get(`http://localhost:5001/students?name=${loggedInUserName}`);
+      const studentData = studentResponse.data;
+
+      if (studentData.length > 0) {
+        // If student exists, update their image URL
+        await axios.put(`http://localhost:5001/students/${studentData[0].id}`, {
+          ...studentData[0],
+          image: imageSource, // Update the image URL
+        });
+      } else {
+        // If no existing entry, create a new student entry
+        await axios.post('http://localhost:5001/students', {
+          name: loggedInUserName,
+          image: imageSource, // Add the new image URL
+        });
+      }
+
       resetForm();
     } catch (error) {
       console.error('Error posting data:', error.response ? error.response.data : error.message);
@@ -53,35 +64,29 @@ const Post = () => {
   const resetForm = () => {
     setComment('');
     setImage(null);
-    setImageUrl(''); // Ensure this is reset
+    setImageUrl('');
     setModalOpen(false);
-    navigate('/main');
+    navigate('/');
   };
 
   const handleFileChange = (e) => {
     setImage(e.target.files[0]);
-    setImageUrl(''); // Clear URL field
-    setPostMethod('file'); // Change method to file
+    setImageUrl('');
+    setPostMethod('file');
   };
-
 
   const handleUrlChange = (e) => {
     setImageUrl(e.target.value);
-    setImage(null); // Clear file field
-    setPostMethod('url'); // Change method to URL
-  };  return (
+    setImage(null);
+    setPostMethod('url');
+  };
+
+  return (
     isModalOpen && (
       <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
         <form onSubmit={handleSubmit} className="bg-white p-8 rounded-lg shadow-lg w-11/12 max-w-md">
           <h3 className="text-2xl font-bold text-orange-600">Create a Post</h3>
-          <textarea
-            value={comment}
-            onChange={(e) => setComment(e.target.value)}
-            placeholder="Write your comment here..."
-            rows="4"
-            required
-            className="w-full p-3 mb-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
-          />
+    
           <div className="flex space-x-2 mb-4">
             <button type="button" onClick={() => setPostMethod('url')} className={`flex-1 py-2 ${postMethod === 'url' ? 'bg-orange-600 text-white' : 'bg-gray-200 text-black'}`}>
               URL orqali
@@ -100,7 +105,7 @@ const Post = () => {
           ) : (
             <input
               type="url"
-              value={imageUrl} // Keep this controlled
+              value={imageUrl}
               onChange={handleUrlChange}
               placeholder="Enter image URL"
               className="w-full p-3 mb-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
@@ -118,4 +123,4 @@ const Post = () => {
   );
 };
 
-export default Post;
+export default Upladeimg;

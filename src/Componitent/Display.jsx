@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import CommentModal from './CommentModal';
+import CommentModal from './commetnModal';
 
 const HeartIcon = ({ isLiked, onClick, likeCount }) => (
     <div className="flex items-center space-x-2">
@@ -57,7 +57,7 @@ const Display = () => {
                 setUsers(response.data || []);
 
                 if (loggedInUser) {
-                    const user = response.data.find((u) => u.name === loggedInUser.name);
+                    const user = response.data.find((u) => u.email === loggedInUser.email);
                     if (user) {
                         const userLikedItems = user.likeItems || [];
                         const updatedLikedStates = { ...likedStates };
@@ -75,65 +75,55 @@ const Display = () => {
         fetchUsers();
     }, [loggedInUser, data]);
 
-
     const handleLikeToggle = async (item) => {
         if (!loggedInUser) {
             alert('Mahsulotlarni yoqtirish uchun tizimga kiring.');
             return;
         }
-    
-        const user = users.find((user) => user.name === loggedInUser.name); // Correct the name typo
+
+        const user = users.find((user) => user.email === loggedInUser.email);
         if (!user) {
             console.error('Foydalanuvchi topilmadi.');
             return;
         }
-    
-        // Check if the product is already liked by the user
+
         const isProductLiked = likedStates[item.id];
-    
-        // Update liked items for the user in `students` JSON
         const updatedLikedItems = isProductLiked
-            ? user.likeItems.filter((i) => i !== item.id)  // Remove item if already liked
-            : [...(user.likeItems || []), item.id];        // Add item if not already liked
-    
-        // Update the like count in the `posts` JSON
+            ? user.likeItems.filter((i) => i !== item.id)
+            : [...(user.likeItems || []), item.id];
+
+        const updatedUser = {
+            ...user,
+            likeItems: updatedLikedItems,
+        };
+
         const updatedItem = {
             ...item,
-            likeCount: isProductLiked ? item.likeCount - 1 : item.likeCount + 1, // Increment or decrement like count
+            likeCount: isProductLiked ? item.likeCount - 1 : item.likeCount + 1,
         };
-    
-        // Update the user and post data on the server
+
         try {
-            // Update the student's liked items
-            await axios.put(`http://localhost:5001/students/${user.id}`, {
-                ...user,
-                likeItems: updatedLikedItems,
-            });
-    
-            // Update the post's like count
+            await axios.put(`http://localhost:5001/students/${user.id}`, updatedUser);
             await axios.put(`http://localhost:5001/posts/${item.id}`, updatedItem);
-    
-            // Update local state for users and posts
+
             setUsers((prevUsers) =>
                 prevUsers.map((u) =>
-                    u.name === loggedInUser.name ? { ...u, likeItems: updatedLikedItems } : u
+                    u.email === loggedInUser.email ? updatedUser : u
                 )
             );
-    
+
             setData((prevData) =>
                 prevData.map((p) => (p.id === item.id ? updatedItem : p))
             );
-    
-            // Update the local liked states
+
             setLikedStates((prevStates) => ({
                 ...prevStates,
-                [item.id]: !isProductLiked,  // Toggle the liked state
+                [item.id]: !isProductLiked,
             }));
         } catch (error) {
             console.error('Yoqtirilgan narsalarni yangilashda xatolik:', error);
         }
     };
-    
 
     const handleCardClick = (product) => {
         setSelectedProduct(product);
@@ -159,9 +149,9 @@ const Display = () => {
         <div className=' max-w-md'>
             <h2 className="text-4xl flex justify-center items-center  gap-4 font-extrabold mb-[-10px] text-center font-poppins">
                 <img className='w-12 mt-8' src="https://cdn-icons-png.flaticon.com/512/9672/9672588.png" alt="" />
-                <p className='text-4xl mt-8 font-extrabold text-[#100D5D]'>Postlar</p>
+                <p className='text-4xl mt-8 font-extrabold'>Postlar</p>
             </h2>
-            <div className="max-w-2xl mx-auto p-5 mt-10 overflow-auto" style={{ maxHeight: '90vh' }}>
+            <div className="max-w-xl mx-auto p-5 mt-10 overflow-auto" style={{ maxHeight: '90vh' }}>
                 <div className="flex flex-col space-y-6">
                     {data.length === 0 ? (
                         <p className="text-center text-lg font-poppins">
@@ -174,7 +164,6 @@ const Display = () => {
                                 <p className="text-gray-600 mb-5">{item.timestamp}</p>
                                 <img src={item.image} alt={item.title} className="w-full object-cover rounded-md mb-2" />
                                 <p className="text-md mb-2">{item.comment}</p>
-
 
                                 <div className='flex justify-between items-center'>
                                     <HeartIcon

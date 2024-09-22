@@ -45,9 +45,9 @@ const CustomCard = () => {
     };
 
     return (
-        <div className="grid grid-cols-2 gap-6 mt-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-16">
             {/* Card 1 - Yordamchi o'qituvchi */}
-            <div className="bg-white p-6  w-[100%] h-48 rounded-lg shadow-md flex justify-between items-center">
+            <div className="bg-white p-6 w-full h-auto sm:h-48 rounded-lg shadow-md flex flex-col justify-between">
                 <div className="flex items-center space-x-4">
                     <img
                         src="https://space.marsit.uz/img/tutor-img.34ff9406.png"
@@ -59,18 +59,21 @@ const CustomCard = () => {
                         <p className="text-xl text-gray-500">Zapisa oling</p>
                     </div>
                 </div>
-                <button
-                    className="bg-blue-500 text-white font-bold text-xl w-[160px] h-[50px] rounded-lg"
-                    onClick={openTutorModal}
-                >
-                    Zapisa
-                </button>
+                <div className="flex justify-center mt-4">
+                    <button
+                        className="bg-blue-500 text-white font-bold text-xl w-full sm:w-[160px] h-[50px] rounded-lg"
+                        onClick={openTutorModal}
+                    >
+                        Zapisa
+                    </button>
+                </div>
             </div>
+
 
             {/* Tutor Modal */}
             {isTutorModalOpen && (
                 <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-                    <div className="bg-white rounded-lg p-6 w-[400px] shadow-lg relative">
+                    <div className="bg-white rounded-lg p-6 w-[90%] sm:w-[400px] shadow-lg relative">
                         <button
                             className="absolute top-2 right-2 text-gray-500 hover:text-gray-700"
                             onClick={closeTutorModal}
@@ -95,8 +98,10 @@ const CustomCard = () => {
                         </button>
                     </div>
                 </div>
-            )}            {/* Card 2 - Новости */}
-            <div className="bg-white p-6 rounded-lg shadow-md flex justify-between items-center">
+            )}
+
+            {/* Card 2 - Новости */}
+            <div className="bg-white p-6 w-full h-auto sm:h-48 rounded-lg shadow-md flex flex-col justify-between">
                 <div className="flex items-center space-x-4">
                     <img
                         src="https://space.marsit.uz/img/news.bb559cba.svg"
@@ -105,22 +110,24 @@ const CustomCard = () => {
                     />
                     <div>
                         <p className="font-bold text-2xl text-gray-700">Новости</p>
-                        <p className="text-gray-500 text-xl">Yangiliklardan xabardor bo'ling</p>
+                        <p className="text-xl text-gray-500">Yangiliklardan xabardor bo'ling</p>
                     </div>
                 </div>
-                <Link
-                    to="/news"
-                    className="bg-red-500 text-center text-xl font-bold flex items-center justify-center text-white w-[160px] h-[50px] rounded-lg"
-                    onClick={openNewsModal}
-                >
-                    Watch
-                </Link>
+                <div className="flex justify-center mt-4">
+                    <Link
+                        to="/news"
+                        className="bg-red-500 text-center text-xl font-bold flex items-center justify-center text-white w-full sm:w-[160px] h-[50px] rounded-lg"
+                        onClick={openNewsModal}
+                    >
+                        Watch
+                    </Link>
+                </div>
             </div>
 
             {/* News Modal */}
             {isNewsModalOpen && (
                 <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-                    <div className="bg-white rounded-lg p-6 w-[400px] shadow-lg relative">
+                    <div className="bg-white rounded-lg p-6 w-[90%] sm:w-[400px] shadow-lg relative">
                         <button
                             className="absolute top-2 right-2 text-gray-500 hover:text-gray-700"
                             onClick={closeNewsModal}
@@ -139,39 +146,46 @@ const CustomCard = () => {
                     </div>
                 </div>
             )}
+
+
             {/* Card 3 - Сертификаты */}
-            <div className="bg-white p-6 rounded-lg shadow-md h-48 flex justify-between items-center">
+            <div className="bg-white p-6 w-full h-auto sm:h-48 rounded-lg shadow-md flex flex-col justify-between">
                 <div className="flex items-center space-x-4">
                     <img
-                        src="https://space.marsit.uz/img/certificate.137f8907.svg" // Placeholder image
+                        src="https://space.marsit.uz/img/certificate.137f8907.svg"
                         alt="Сертификаты"
                         className="w-16 h-16"
                     />
                     <div>
-                        <p className="  text-gray-700 text-2xl">Сертификаты</p>
-                        <p className=" text-gray-500 text-xl">Сертификаты, выданные Mars IT School</p>
+                        <p className="text-2xl text-gray-700">Сертификаты</p>
+                        <p className="text-xl text-gray-500">Сертификаты, выданные Mars IT School</p>
                     </div>
                 </div>
-                <button className="bg-blue-200 text-xl font-bold text-blue-500 w-[160px] h-[50px] rounded-lg">
-                    Check
-                </button>
+                <div className="flex justify-center mt-4">
+                    <button className="bg-blue-200 text-xl font-bold text-blue-500 w-full sm:w-[160px] h-[50px] rounded-lg">
+                        Check
+                    </button>
+                </div>
             </div>
+
             {/* Card 4 - Поделиться с друзьями */}
-            <div className="bg-white p-6 rounded-lg shadow-md flex justify-between items-center">
+            <div className="bg-white p-6 w-full h-auto sm:h-48 rounded-lg shadow-md flex flex-col justify-between">
                 <div className="flex items-center space-x-4">
                     <img
-                        src="https://space.marsit.uz/img/share-icon-left.c27c8ca7.svg" // Placeholder image
+                        src="https://space.marsit.uz/img/share-icon-left.c27c8ca7.svg"
                         alt="Поделиться с друзьями"
                         className="w-16 h-16"
                     />
                     <div>
-                        <p className=" text-gray-700 text-2xl">Поделиться с друзьями</p>
-                        <p className="text-gray-500 text-xl">Делитесь с друзьями и получайте коины</p>
+                        <p className="text-2xl text-gray-700">Поделиться с друзьями</p>
+                        <p className="text-xl text-gray-500">Делитесь с друзьями и получайте коины</p>
                     </div>
                 </div>
-                <button className="bg-blue-200 text-xl font-bold text-blue-500 w-[160px] h-[50px] rounded-lg">
-                    Share
-                </button>
+                <div className="flex justify-center mt-4">
+                    <button className="bg-blue-200 text-xl font-bold text-blue-500 w-full sm:w-[160px] h-[50px] rounded-lg">
+                        Share
+                    </button>
+                </div>
             </div>
         </div>
     );

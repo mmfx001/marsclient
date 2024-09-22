@@ -8,7 +8,6 @@ import CustomCard from './components/Jobs';
 import Curs from './components/Curs';
 import RatingPage from './components/Rating';
 
-
 const App = () => {
     const [userData, setUserData] = useState(null);
     const [loggedInUser, setLoggedInUser] = useState(null);
@@ -44,12 +43,11 @@ const App = () => {
     return (
         <>
             <Header />
-            <div className="container mx-auto px-8 py-12 flex  gap-6 bg-gray-100">
-                {/* Profile Section */}
-
-                <div className="col-span-3 bg-white w-[450px] mt-14 p-6 rounded-lg shadow-lg sticky top-0">
-                    {/* Profile Section */}  <h2 className="text-4xl mt-[-120px] ml-[-170px] flex justify-center items-center  text-[#100D5D] gap-4 font-extrabold mb-4 text-center font-poppins">
-                        <img className='w-12 mt-8' src="https://space.marsit.uz/img/profile_logo.8dfe14fc.png" alt="" />
+            <div className="container mx-auto px-8 py-12 flex flex-col lg:flex-row gap-6 bg-gray-100">
+                {/* Profil qismi */}
+                <div className="lg:col-span-3 bg-white w-full lg:w-[450px] mt-14 p-6 rounded-lg shadow-lg lg:sticky lg:top-0">
+                    <h2 className="text-4xl mt-[-120px] ml-[-170px] flex justify-center items-center text-[#100D5D] gap-4 font-extrabold mb-4 text-center font-poppins">
+                        <img className='w-12 mt-8' src="https://space.marsit.uz/img/profile_logo.8dfe14fc.png" alt="Profil" />
                         <p className='text-4xl mt-8 font-extrabold'>Profil</p>
                     </h2>
                     <div className="bg-gray-50 p-6 rounded-lg text-center">
@@ -77,14 +75,16 @@ const App = () => {
                                     </div>
                                 </div>
                             </>
+
                         ) : (
                             <p className="text-lg text-gray-500">Loading...</p>
                         )}
                     </div>
-                    {/* Attendance Section */}
+
+                    {/* Davomat qismi */}
                     <div className="px-6 rounded-lg my-2 text-center shadow-md flex flex-col">
                         <div className='flex gap-4'>
-                            <img className='w-20 h-20' src="https://lab.marsit.uz/media/badges/50x%20Davomat/Artboard_1_KysZgAG.png" alt="" />
+                            <img className='w-20 h-20' src="https://lab.marsit.uz/media/badges/50x%20Davomat/Artboard_1_KysZgAG.png" alt="Davomat" />
                             <div className='flex flex-col'>
                                 <h4 className="text-xl font-bold mb-2 flex">{attendance}x Davomat</h4>
                                 <p className="text-sm text-gray-600 text-left">150 ta dars qoldirmasdan darslarda qatnashish</p>
@@ -104,7 +104,7 @@ const App = () => {
                         </div>
                     </div>
 
-                    {/* Learning with Games Section */}
+                    {/* O'yinlar qismi */}
                     <div className="bg-gradient-to-r from-orange-500 to-orange-300 p-6 rounded-lg text-center shadow-md mt-6">
                         <h4 className="font-bold text-white text-xl mb-4">O'yinlar bilan o'rganing</h4>
                         <div className="flex flex-col gap-6">
@@ -136,10 +136,12 @@ const App = () => {
                             </a>
                         </div>
                     </div>
+
                 </div>
 
-                <div className="w-full mt-14">
-                   {/* Profile Section */}  <h2 className="text-4xl mt-[-90px] ml-[-890px] flex justify-center items-center  text-[#100D5D] gap-4 font-extrabold mb-4 text-center font-poppins">
+                {/* Yangiliklar qismi */}
+                <div className="w-full mt-14 lg:mt-0">
+                    <h2 className="text-4xl mt-[-30px] ml-[-890px] flex justify-center items-center text-[#100D5D] gap-4 font-extrabold mb-4 text-center font-poppins">
                         <p className='text-4xl mt-8 font-extrabold'>Yangiliklar</p>
                     </h2>
                     <Swipper />

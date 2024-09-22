@@ -1,0 +1,84 @@
+.product-card {
+    transition: transform 0.3s;
+}
+
+.product-card:hover {
+    transform: scale(1.05);
+}
+
+.shadow-custom {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.header-sec {
+    padding: 10px 20px;
+}
+
+/* Responsive styles for cards */
+@media (min-width: 380px) and (max-width: 500px) {
+    .product-card {
+        padding: 10px;
+    }
+
+    .product-card img {
+        height: 200px;
+        /* Adjust image height for smaller screens */
+    }
+
+    .text-lg {
+        font-size: 1.2rem;
+        /* Increase font size for better readability */
+    }
+
+    .text-yellow-500 {
+        font-size: 1.1rem;
+        /* Adjust price font size */
+    }
+
+    .header-sec {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        /* Align items to the start */
+    }
+
+    .header-sec h1 {
+        font-size: 2rem;
+        /* Adjust the font size for smaller screens */
+        margin-bottom: 10px;
+        /* Add margin below the title */
+    }
+
+    .header-sec .text-lg {
+        font-size: 1rem;
+        /* Adjust balance font size */
+    }
+
+    .header-sec a {
+        margin-top: 10px;
+        /* Add space above the link on smaller screens */
+    }  .header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        gap: 0.5rem; /* Kichik ekranlar uchun bo'shliqlarni kamaytirdik */
+        margin-top: 0.5rem;
+    }
+
+    .user-actions {
+        flex-direction: column;
+        gap: 0.5rem; /* Kichik ekranlar uchun bo'shliqlarni kamaytirdik */
+        margin-top: 0.5rem;
+    }
+
+    .user-info {
+        width: 100%; /* Kichik ekranlarda user-info kengligini 100% qilib qo'ydik */
+    }
+
+    .nav-links a, .user-actions a {
+        font-size: 0.875rem; /* Kichik ekranlarda matn o'lchamini kamaytirdik */
+    }
+}

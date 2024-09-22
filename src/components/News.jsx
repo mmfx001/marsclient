@@ -1,78 +1,74 @@
 import React, { useState } from 'react';
-import Header from './Header';
-import { Link } from 'react-router-dom';
+
 import { FaArrowLeftLong } from "react-icons/fa6";
+import Header from './Header';
 
 const News = () => {
-    // Dastlabki rasmni saqlash uchun state
-    const [mainImage, setMainImage] = useState('https://lab.marsit.uz/media/news/Screenshot_2024-08-22_at_15.44.59_v3APJAz.png'); // Dastlabki katta rasm
-    const [fade, setFade] = useState(false); // Fade animatsiya uchun state
+    const [mainImage, setMainImage] = useState('https://lab.marsit.uz/media/news/Screenshot_2024-08-22_at_15.44.59_v3APJAz.png'); // Default large image
+    const [fade, setFade] = useState(false); // State for fade animation
 
-    // Kichik rasmlar ro'yxati
+    // Array of small images
     const smallImages = [
         {
-            src: 'https://lab.marsit.uz/media/news/Screenshot_2024-08-22_at_15.44.59_v3APJAz.png', // Birinchi kichik rasm URL
+            src: 'https://lab.marsit.uz/media/news/Screenshot_2024-08-22_at_15.44.59_v3APJAz.png',
             alt: 'Yangilik 1',
         },
         {
-            src: 'https://lab.marsit.uz/media/news/Screenshot_2024-08-22_at_15.44.59_RqFVwVS.png', // Ikkinchi kichik rasm URL
+            src: 'https://lab.marsit.uz/media/news/Screenshot_2024-08-22_at_15.44.59_RqFVwVS.png',
             alt: 'Yangilik 2',
         },
     ];
 
-    // Rasm almashganda animatsiya funksiyasi
+    // Function to change the image with fade animation
     const handleImageChange = (newImage) => {
-        setFade(true); // Animatsiyani boshlash
+        setFade(true);
         setTimeout(() => {
-            setMainImage(newImage); // Yangi rasmni o'rnatish
-            setFade(false); // Animatsiyani qaytarish
-        }, 300); // 300ms dan keyin rasm almashadi
+            setMainImage(newImage);
+            setFade(false);
+        }, 300);
     };
 
     return (
-       <>
-        <Header/>
-        <div className='w-[100%] h-[100vh] flex justify-center items-center'>
-            <div className="bg-white w-[75%]">
-                {/* Title section */}
-                <div className="bg-orange-500 p-4 rounded-t-lg">
-                    <h2 className="text-white text-xl font-bold">Oxirgi yangiliklar</h2>
-                </div>
-
-                {/* Main content section */}
-                <div className="flex p-4 gap-4 bg-gray-50 rounded-b-lg">
-                    {/* Left side large image */}
-                    <div className="w-2/3">
-                        <img
-                            src={mainImage} // Katta rasmni dinamik ko'rsatish
-                            alt="Katta yangilik"
-                            className={`w-full h-full object-cover rounded-lg transition-opacity duration-500 ${fade ? 'opacity-0' : 'opacity-100'}`} // Fade animatsiya
-                        />
+        <>
+            <Header />
+            <div className="flex justify-center items-center w-full h-screen">
+                <div className="bg-white rounded-lg shadow-lg w-11/12 md:w-3/4 lg:w-2/3">
+                    {/* Title section */}
+                    <div className="bg-orange-500 p-4 rounded-t-lg">
+                        <h2 className="text-white text-2xl font-bold">Oxirgi Yangiliklar</h2>
                     </div>
 
-                    {/* Right side small images */}
-                    <div className="w-1/3 flex flex-col gap-4">
-                        {smallImages.map((image, index) => (
-                            <div
-                                key={index}
-                                className={`bg-white border ${mainImage === image.src ? 'border-orange-500' : 'border-gray-200'} p-2 rounded-lg cursor-pointer`}
-                                onClick={() => handleImageChange(image.src)} // Rasm bosilganda katta rasmni almashtirish
-                            >
-                                <img
-                                    src={image.src}
-                                    alt={image.alt}
-                                    className="w-full object-cover rounded-lg"
-                                />
-                            </div>
-                        ))}
+                    {/* Main content section */}
+                    <div className="flex flex-col md:flex-row p-4 gap-4 bg-gray-50 rounded-b-lg">
+                        {/* Left side large image */}
+                        <div className="md:w-2/3">
+                            <img
+                                src={mainImage}
+                                alt="Katta yangilik"
+                                className={`w-full h-auto object-cover rounded-lg transition-opacity duration-500 ${fade ? 'opacity-0' : 'opacity-100'}`}
+                            />
+                        </div>
+
+                        {/* Right side small images */}
+                        <div className="md:w-1/3 flex flex-col gap-4">
+                            {smallImages.map((image, index) => (
+                                <div
+                                    key={index}
+                                    className={`bg-white border ${mainImage === image.src ? 'border-orange-500' : 'border-gray-200'} p-2 rounded-lg cursor-pointer transition duration-300 ease-in-out transform hover:scale-105`}
+                                    onClick={() => handleImageChange(image.src)}
+                                >
+                                    <img
+                                        src={image.src}
+                                        alt={image.alt}
+                                        className="w-full h-auto object-cover rounded-lg"
+                                    />
+                                </div>
+                            ))}
+                        </div>
                     </div>
-                    
                 </div>
-                
             </div>
-            
-        </div>
-       </>
+        </>
     );
 };
 
