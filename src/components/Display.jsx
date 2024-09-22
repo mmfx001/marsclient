@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import CommentModal from './commetnModal';
+import CommentModal from './CommentModal';
 
 const HeartIcon = ({ isLiked, onClick, likeCount }) => (
     <div className="flex items-center space-x-2">
@@ -104,9 +104,7 @@ const Display = () => {
 
         try {
             await axios.put(`http://localhost:5001/students/${user.id}`, updatedUser);
-            await axios.put(`http://localhost:5001/posts/${item.id}`, updatedItem);
-
-            setUsers((prevUsers) =>
+            await axios.put(`http://localhost:5001/posts/${item.id}`, updatedItem);            setUsers((prevUsers) =>
                 prevUsers.map((u) =>
                     u.email === loggedInUser.email ? updatedUser : u
                 )
@@ -146,12 +144,12 @@ const Display = () => {
     };
 
     return (
-        <div className='bg-gray-100'>
-            <h2 className="text-4xl flex justify-center items-center gap-4 font-extrabold mb-[-10px] text-center font-poppins">
+        <div className=' max-w-md'>
+            <h2 className="text-4xl flex justify-center items-center  gap-4 font-extrabold mb-[-10px] text-center font-poppins">
                 <img className='w-12 mt-8' src="https://cdn-icons-png.flaticon.com/512/9672/9672588.png" alt="" />
-                <p className='text-4xl mt-8 font-extrabold'>Postlar</p>
+                <p className='text-4xl mt-8 font-extrabold text-[#100D5D]'>Postlar</p>
             </h2>
-            <div className="max-w-3xl mx-auto p-5 mt-10 overflow-auto" style={{ maxHeight: '90vh' }}>
+            <div className="max-w-2xl mx-auto p-5 mt-10 overflow-auto" style={{ maxHeight: '90vh' }}>
                 <div className="flex flex-col space-y-6">
                     {data.length === 0 ? (
                         <p className="text-center text-lg font-poppins">

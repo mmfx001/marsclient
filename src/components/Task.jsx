@@ -114,10 +114,7 @@ const Task = ({ task }) => {
           <a href={task.materials} target="_blank" rel="noopener noreferrer">
             <button className='w-[100px] h-[50px] bg-[#00A9F1] rounded-[10px] text-white'>Открыть</button>
           </a>
-        </div>
-
-
-        <div className='p-5 bg-white w-[430px] rounded-[10px] flex flex-col gap-3'>
+        </div>        <div className='p-5 bg-white w-[430px] rounded-[10px] flex flex-col gap-3'>
           <b>
             <p className='bg-[#E0F6FF] w-[73px] text-[12px] text-center text-[#00A9F1] rounded-[7px]'>Материалы</p>
           </b>

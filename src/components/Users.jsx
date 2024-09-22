@@ -2,14 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { FaCoins } from 'react-icons/fa';
-import Header from './components/Header';
-import Swipper from './components/Swapper';
-import CustomCard from './components/Jobs';
-import Curs from './components/Curs';
-import RatingPage from './components/Rating';
 
-
-const App = () => {
+const Users = () => {
     const [userData, setUserData] = useState(null);
     const [loggedInUser, setLoggedInUser] = useState(null);
     const [attendance, setAttendance] = useState(0); // Davomatni saqlash uchun state
@@ -32,7 +26,7 @@ const App = () => {
 
         fetchUserData();
     }, []);
-    
+
     const getAttendanceStyle = (attendance) => {
         const percentage = Math.min(attendance / 150, 1);
         return {
@@ -42,12 +36,13 @@ const App = () => {
     };
 
     return (
-     <>
-     <Header/>
-        <div className="container mx-auto px-8 py-12 flex  gap-6">
-            {/* Profile Section */}
-            <div className="col-span-3 bg-white w-[450px] p-6 rounded-lg shadow-lg sticky top-0">
-                <h2 className="text-3xl font-bold text-blue-600 mb-6">Profil</h2>
+        <div className="container px-8 py-12 gap-6 ">
+            {/* Profile Section */}  <h2 className="text-4xl flex justify-center items-center  text-[#100D5D] gap-4 font-extrabold mt-[-50px] text-center font-poppins">
+                <img className='w-12 mt-8' src="https://space.marsit.uz/img/profile_logo.8dfe14fc.png" alt="" />
+                <p className='text-4xl mt-8 font-extrabold'>Profil</p>
+            </h2>
+            <div className="col-span-3 bg-white w-[450px] p-6 rounded-lg mt-14 shadow-lg">
+          
                 <div className="bg-gray-50 p-6 rounded-lg text-center">
                     <Link to='/uplade'>
                         <img
@@ -60,15 +55,15 @@ const App = () => {
                         <>
                             <h3 className="text-2xl font-bold">{loggedInUser.name}</h3>
                             <p className="text-lg text-gray-500">{loggedInUser.league} | {loggedInUser.group} | {loggedInUser.teacher} | {loggedInUser.time}</p>
-                            <div className="bg-gray-200 p-2 rounded-lg my-6">
-                                <div className='bg-orange-600 p-4 rounded-lg w-full text-white flex justify-between items-center'>
+                            <div className="bg-gray-200 p-6 rounded-lg my-6">
+                                <div className='bg-orange-600 p-4 rounded-lg text-white flex justify-between items-center'>
                                     <div className='flex items-center'>
-                                        <FaCoins className='text-yellow-400 text-2xl' />
-                                        <p className='text-xl font-bold'>{loggedInUser.coins}</p>
+                                        <FaCoins className='text-yellow-400 text-3xl mr-2' />
+                                        <p className='text-3xl font-bold'>{loggedInUser.coins}</p>
                                     </div>
                                     <div className='flex items-center'>
                                         <img className='w-10 mr-2' src="https://space.marsit.uz/img/XP.2c530ff3.svg" alt="XP" />
-                                        <p className='text-xl font-bold'>{loggedInUser.xp}</p>
+                                        <p className='text-3xl font-bold'>{loggedInUser.xp}</p>
                                     </div>
                                 </div>
                             </div>
@@ -76,13 +71,12 @@ const App = () => {
                     ) : (
                         <p className="text-lg text-gray-500">Loading...</p>
                     )}
-                </div>
-                {/* Attendance Section */}
+                </div>                {/* Attendance Section */}
                 <div className="p-6 rounded-lg my-6 text-center shadow-md flex flex-col">
                     <div className='flex gap-4'>
                         <img className='w-20' src="https://lab.marsit.uz/media/badges/50x%20Davomat/Artboard_1_KysZgAG.png" alt="" />
                         <div className='flex flex-col'>
-                            <h4 className="text-xl font-bold mb-2 flex">{attendance}x Davomat</h4>
+                            <h4 className="text-2xl font-bold mb-2 flex">{attendance}x Davomat</h4>
                             <p className="text-sm text-gray-600 text-left">150 ta dars qoldirmasdan darslarda qatnashish</p>
                         </div>
                     </div>
@@ -133,18 +127,8 @@ const App = () => {
                     </div>
                 </div>
             </div>
-
-            <div className="w-full">
-                <Swipper/>
-                <CustomCard/>
-                <Curs/>
-            </div>
         </div>
-        <div className='w-full'>
-        <RatingPage/>
-        </div>
-     </>
     );
 };
 
-export default App;
+export default Users;

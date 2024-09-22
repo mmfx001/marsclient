@@ -66,4 +66,4 @@ const CommentModal = ({ isOpen, onClose, onCommentSubmit, comments, productId, u
     );
 };
 
-export default CommentModal;
+export default CommentModal;    
