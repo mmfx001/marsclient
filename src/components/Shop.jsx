@@ -6,9 +6,8 @@ const Shop = () => {
   const [products, setProducts] = useState([]);
   const [loggedInUser, setLoggedInUser] = useState(null);
 
-  // Fetch shop data from a local JSON file or API
   useEffect(() => {
-    fetch('http://localhost:5001/shop') 
+    fetch('http://localhost:5001/shop')
       .then((response) => response.json())
       .then((data) => setProducts(data))
       .catch((error) => console.error('Error fetching the shop data:', error));
@@ -17,41 +16,54 @@ const Shop = () => {
     if (userData) {
       setLoggedInUser(userData);
     }
-  }, []);
-
-  // Function to handle purchase and save to localStorage
-  const handleBuy = (product) => {
-    if (!loggedInUser || loggedInUser.coins < product.price) {
-      alert('Not enough coins to make this purchase.');
+  }, []);const handleBuy = (product) => {
+    const userData = JSON.parse(localStorage.getItem('loggedInUser'));
+    if (!userData || userData.balance < product.price) {
+      alert('Not enough balance to make this purchase.');
       return;
     }
-
+  
     const purchase = {
       id: product.id,
       name: product.name,
       price: product.price,
       image: product.image,
-      purchaseCode: Math.random().toString(36).substring(7), // Generate random code
+      purchaseCode: Math.random().toString(36).substring(7),
       status: 'received',
-      date: new Date().toLocaleString() // Current date and time
+      date: new Date().toLocaleString(),
     };
-
-    // Get the existing purchase history from localStorage
+  
     let purchaseHistory = JSON.parse(localStorage.getItem('purchaseHistory')) || [];
-    
-    // Add the new purchase to the history
     purchaseHistory.push(purchase);
-    
-    // Save the updated history back to localStorage
     localStorage.setItem('purchaseHistory', JSON.stringify(purchaseHistory));
-
-    // Update user coins
-    loggedInUser.coins -= product.price;
-    localStorage.setItem('loggedInUser', JSON.stringify(loggedInUser));
-
-    alert(`${product.name} has been purchased!`);
+  
+    const newBalance = userData.balance - product.price;
+  
+    // Foydalanuvchini yangilash uchun to'g'ri ID yoki emailni oling
+    fetch(`http://localhost:5001/students/${userData.id}`, { // yoki userData.id
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ ...userData, balance: newBalance }),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Failed to update balance');
+        }
+        return response.json();
+      })
+      .then(() => {
+        userData.balance = newBalance;
+        localStorage.setItem('loggedInUser', JSON.stringify(userData));
+        alert(`${product.name} has been purchased!`);
+      })
+      .catch((error) => {
+        console.error('Error updating balance:', error);
+        alert('Failed to complete the purchase. Please try again later.');
+      });
   };
-
+  
   return (
     <>
       <Header />
@@ -59,7 +71,7 @@ const Shop = () => {
         <div className="flex justify-between items-center mb-6">
           <h1 className="text-3xl font-bold text-[#0F0D5D]">🛒 Магазин</h1>
           <div className="text-lg text-gray-600">
-            Coins: {loggedInUser ? loggedInUser.coins : 0}
+            Balance: {loggedInUser ? loggedInUser.balance : 0}
           </div>
           <Link to="/shop/history" className="flex items-center text-red-500 hover:text-red-600 transition duration-300">
             <svg
