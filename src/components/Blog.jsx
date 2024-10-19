@@ -1,5 +1,4 @@
 import React from 'react'
-import { Route } from 'react-router-dom'
 import Users from './Users'
 import Display from './Display'
 import StudentList from './Friend'
