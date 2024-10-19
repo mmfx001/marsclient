@@ -12,7 +12,7 @@ const Shop = () => {
   const [purchaseCode, setPurchaseCode] = useState('');
 
   useEffect(() => {
-    fetch('http://localhost:5001/shop')
+    fetch('https://shoopjson-2.onrender.com/api/shop')
       .then((response) => response.json())
       .then((data) => setProducts(data))
       .catch((error) => console.error('Do\'kon ma\'lumotlarini olishda xato:', error));
@@ -84,7 +84,7 @@ const Shop = () => {
     const newBalance = userData.balance - selectedProduct.price;
     const updatedQuantity = selectedProduct.quantity - 1;
 
-    fetch(`http://localhost:5001/shop/${selectedProduct.id}`, {
+    fetch(`https://shoopjson-2.onrender.com/api/shop/${selectedProduct.id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -104,7 +104,7 @@ const Shop = () => {
         setProducts(updatedProducts);
 
 
-        fetch(`http://localhost:5001/students/${userData.id}`, {
+        fetch(`https://shoopjson-2.onrender.com/api/students/${userData.id}`, {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',

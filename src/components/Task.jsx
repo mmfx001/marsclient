@@ -11,7 +11,7 @@ const Task = ({ task }) => {
   useEffect(() => {
     const fetchComment = async () => {
       try {
-        const response = await axios.get(`http://localhost:5001/files/${task.id}`);
+        const response = await axios.get(`https://shoopjson-2.onrender.com/api/files/${task.id}`);
         if (response.data.comment) {
           setAdminComment(response.data.comment);
         }
@@ -49,7 +49,7 @@ const Task = ({ task }) => {
     };
 
     try {
-      const response = await axios.post('http://localhost:5001/files', fileData, {
+      const response = await axios.post('https://shoopjson-2.onrender.com/api/files', fileData, {
         headers: {
           'Content-Type': 'application/json',
         },

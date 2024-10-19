@@ -34,7 +34,7 @@ const Display = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get('http://localhost:5001/posts');
+                const response = await axios.get('https://shoopjson-2.onrender.com/api/posts');
                 setData(response.data);
 
                 const initialLikedStates = {};
@@ -53,7 +53,7 @@ const Display = () => {
     useEffect(() => {
         const fetchUsers = async () => {
             try {
-                const response = await axios.get('http://localhost:5001/students');
+                const response = await axios.get('https://shoopjson-2.onrender.com/api/students');
                 setUsers(response.data || []);
 
                 if (loggedInUser) {

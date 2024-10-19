@@ -9,7 +9,7 @@ const StudentList = () => {
     useEffect(() => {
         const fetchStudents = async () => {
             try {
-                const response = await axios.get('http://localhost:5001/students');
+                const response = await axios.get('https://shoopjson-2.onrender.com/api/students');
                 console.log(response.data);
                 if (Array.isArray(response.data)) {
                     setStudents(response.data);

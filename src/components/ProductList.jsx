@@ -12,7 +12,7 @@ const ProductsList = () => {
     const fetchProducts = async () => {
       setStatus('loading');
       try {
-        const response = await fetch('http://localhost:5001/products');
+        const response = await fetch('https://shoopjson-2.onrender.com/api/products');
         const data = await response.json();
         setProducts(data);
         setStatus('succeeded');

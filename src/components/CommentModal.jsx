@@ -10,7 +10,7 @@ const CommentModal = ({ isOpen, onClose, onCommentSubmit, comments, productId, u
     const handleCommentSubmit = async () => {
         if (newComment.trim()) {
             try {
-                const response = await axios.post('http://localhost:5001/comments', {
+                const response = await axios.post('https://shoopjson-2.onrender.com/api/comments', {
                     productId,
                     comment: newComment,
                     author: userEmail, // Yozuvchi emaili

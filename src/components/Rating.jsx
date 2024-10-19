@@ -9,7 +9,7 @@ const RatingPage = () => {
     const [isOpen, setIsOpen] = useState(false);
 
     useEffect(() => {
-        axios.get('http://localhost:5001/students')
+        axios.get('https://shoopjson-2.onrender.com/api/students')
             .then((response) => {
                 if (response.data && Array.isArray(response.data)) {
                     setOquvchi(response.data);

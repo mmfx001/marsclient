@@ -32,7 +32,7 @@ const Post = () => {
     };
 
     try {
-      const response = await axios.post('http://localhost:5001/posts', postData);
+      const response = await axios.post('https://shoopjson-2.onrender.com/api/posts', postData);
       console.log(response.data);
       resetForm();
     } catch (error) {

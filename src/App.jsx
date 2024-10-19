@@ -20,7 +20,7 @@ const App = () => {
         const fetchUserData = async () => {
             if (user) {
                 try {
-                    const response = await axios.get(`http://localhost:5001/students`);
+                    const response = await axios.get(`https://shoopjson-2.onrender.com/api/students`);
                     setUserData(response.data);
                     setAttendance(user.attendance || 0);
                 } catch (error) {

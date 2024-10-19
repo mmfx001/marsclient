@@ -13,7 +13,7 @@ const LoggedInStudentInfo = () => {
   useEffect(() => {
     if (loggedInUserName) {
       // Fetch data from the API
-      axios.get('http://localhost:5001/allGroups')
+      axios.get('https://shoopjson-2.onrender.com/api/allGroups')
         .then(response => {
           console.log(response.data); // Log the API response to check the data structure
           const branches = response.data.branches;

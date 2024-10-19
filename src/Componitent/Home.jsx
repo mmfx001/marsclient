@@ -9,7 +9,7 @@ const ImageGallery = () => {
   useEffect(() => {
     const fetchImages = async () => {
       try {
-        const response = await axios.get(`http://localhost:5001/students?name=${loggedInUserName}`);
+        const response = await axios.get(`https://shoopjson-2.onrender.com/api/students?name=${loggedInUserName}`);
         const studentData = response.data;
 
         if (studentData.length > 0) {

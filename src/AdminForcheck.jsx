@@ -9,7 +9,7 @@ const Admin = () => {
   useEffect(() => {
     const fetchTasks = async () => {
       try {
-        const response = await axios.get('http://localhost:5001/files');
+        const response = await axios.get('https://shoopjson-2.onrender.com/api/files');
         setTasks(response.data);
       } catch (error) {
         console.error('Error fetching tasks:', error);
@@ -27,7 +27,7 @@ const Admin = () => {
   
     try {
       // Update task status to approved
-      await axios.patch(`http://localhost:5001/files/${taskId}`, {
+      await axios.patch(`https://shoopjson-2.onrender.com/api/files/${taskId}`, {
         status: 'approved',
       });
   

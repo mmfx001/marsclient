@@ -18,7 +18,7 @@ const CustomCard = () => {
 
         try {
             // Ma'lumotlarni POST qilish
-            const response = await axios.post('http://localhost:5001/Support', newSupport);
+            const response = await axios.post('https://shoopjson-2.onrender.com/api/Support', newSupport);
 
             // Agar so'rov muvaffaqiyatli bo'lsa, frontenddagi supportni yangilaymiz
             setSupport((prevSupport) => [...prevSupport, response.data]);

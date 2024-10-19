@@ -21,7 +21,7 @@ const Login = () => {
         }
 
         try {
-            const usersResponse = await axios.get('http://localhost:5001/students');
+            const usersResponse = await axios.get('https://shoopjson-2.onrender.com/api/students');
             const users = usersResponse.data;
             console.log(users);
             const user = users.find(v => v.name === trimmedName && v.password === trimmedPassword);

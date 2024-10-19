@@ -34,7 +34,7 @@ const Display = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get('http://localhost:5001/posts');
+                const response = await axios.get('https://shoopjson-2.onrender.com/api/posts');
                 setData(response.data);
 
                 const initialLikedStates = {};
@@ -53,7 +53,7 @@ const Display = () => {
     useEffect(() => {
         const fetchUsers = async () => {
             try {
-                const response = await axios.get('http://localhost:5001/students');
+                const response = await axios.get('https://shoopjson-2.onrender.com/api/students');
                 setUsers(response.data || []);
 
                 if (loggedInUser) {
@@ -105,13 +105,13 @@ const Display = () => {
         // Update the user and post data on the server
         try {
             // Update the student's liked items
-            await axios.put(`http://localhost:5001/students/${user.id}`, {
+            await axios.put(`https://shoopjson-2.onrender.com/api/students/${user.id}`, {
                 ...user,
                 likeItems: updatedLikedItems,
             });
     
             // Update the post's like count
-            await axios.put(`http://localhost:5001/posts/${item.id}`, updatedItem);
+            await axios.put(`https://shoopjson-2.onrender.com/api/posts/${item.id}`, updatedItem);
     
             // Update local state for users and posts
             setUsers((prevUsers) =>
@@ -148,7 +148,7 @@ const Display = () => {
 
     const fetchComments = async (productId) => {
         try {
-            const response = await axios.get(`http://localhost:5001/comments?productId=${productId}`);
+            const response = await axios.get(`https://shoopjson-2.onrender.com/api/comments?productId=${productId}`);
             setComments(response.data);
         } catch (error) {
             console.error('Izohlarni olishda xatolik:', error);

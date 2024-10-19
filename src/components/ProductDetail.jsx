@@ -39,7 +39,7 @@ const ProductDetail = ({ product, closeModal }) => {
         const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
 
         if (loggedInUser) {
-            const response = await fetch(`http://localhost:5001/students`);
+            const response = await fetch(`https://shoopjson-2.onrender.com/api/students`);
             if (!response.ok) {
                 setPurchaseError('Foydalanuvchi ma\'lumotlari olishda xato!');
                 return;
@@ -71,7 +71,7 @@ const ProductDetail = ({ product, closeModal }) => {
 
                     const updatedUserData = { ...userData, balance: newCoinAmount };
 
-                    await fetch(`http://localhost:5001/students/${userData.id}`, {
+                    await fetch(`https://shoopjson-2.onrender.com/api/students/${userData.id}`, {
                         method: 'PUT',
                         headers: {
                             'Content-Type': 'application/json',

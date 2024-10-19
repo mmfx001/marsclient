@@ -32,17 +32,17 @@ const Upladeimg = () => {
 
     try {
       // Fetch user data based on name
-      const studentResponse = await axios.get(`http://localhost:5001/students?name=${loggedInUserName}`);
+      const studentResponse = await axios.get(`https://shoopjson-2.onrender.com/api/students?name=${loggedInUserName}`);
       const studentData = studentResponse.data;
 
       // Update or create student record
       if (studentData.length > 0) {
-        await axios.put(`http://localhost:5001/students/${studentData[0].id}`, {
+        await axios.put(`https://shoopjson-2.onrender.com/api/students/${studentData[0].id}`, {
           ...studentData[0],
           image: imageSource, // Update image URL or file
         });
       } else {
-        await axios.post('http://localhost:5001/students', {
+        await axios.post('https://shoopjson-2.onrender.com/api/students', {
           name: loggedInUserName,
           image: imageSource, // Add new image
         });

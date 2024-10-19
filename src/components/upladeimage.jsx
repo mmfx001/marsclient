@@ -28,18 +28,18 @@ const Upladeimg = () => {
 
     try {
       // Check if the student has an existing entry
-      const studentResponse = await axios.get(`http://localhost:5001/students?name=${loggedInUserName}`);
+      const studentResponse = await axios.get(`https://shoopjson-2.onrender.com/api/students?name=${loggedInUserName}`);
       const studentData = studentResponse.data;
 
       if (studentData.length > 0) {
         // If student exists, update their image URL
-        await axios.put(`http://localhost:5001/students/${studentData[0].id}`, {
+        await axios.put(`https://shoopjson-2.onrender.com/api/students/${studentData[0].id}`, {
           ...studentData[0],
           image: imageSource, // Update the image URL
         });
       } else {
         // If no existing entry, create a new student entry
-        await axios.post('http://localhost:5001/students', {
+        await axios.post('https://shoopjson-2.onrender.com/api/students', {
           name: loggedInUserName,
           image: imageSource, // Add the new image URL
         });

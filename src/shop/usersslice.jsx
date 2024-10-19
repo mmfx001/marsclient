@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 // O'quvchilar ma'lumotlarini API'dan fetch qilish
 export const fetchUserData = createAsyncThunk('user/fetchUserData', async () => {
-  const response = await fetch('http://localhost:5001/oquvchi');  // O'quvchilar ma'lumotlari joylashgan URL
+  const response = await fetch('https://shoopjson-2.onrender.com/api/oquvchi');  // O'quvchilar ma'lumotlari joylashgan URL
   const data = await response.json();            // JSON formatdagi ma'lumotlarni olamiz
   return data[0];                                // Dastlab birinchi o'quvchini olish
 });

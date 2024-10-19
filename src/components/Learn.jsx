@@ -12,7 +12,7 @@ const Learning = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const usersResponse = await axios.get(`http://localhost:5001/students/${userdata.id}`);
+                const usersResponse = await axios.get(`https://shoopjson-2.onrender.com/api/students/${userdata.id}`);
                 setUserData(usersResponse.data); // Ma'lumotlarni saqlash
             } catch (error) {
                 console.error('Ma\'lumotlarni olishda xatolik:', error);
