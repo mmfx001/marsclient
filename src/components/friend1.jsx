@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-const StudentList = () => {
+const StudentListt = () => {
     const [students, setStudents] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -35,22 +35,20 @@ const StudentList = () => {
     }
 
     return (
-        <div className="container ml-[-250px]  mx-auto px-8">
-            <h2 className="text-4xl flex justify-center items-center  gap-4 font-extrabold mb-[-10px] text-center font-poppins">
-                <img className='w-12 mt-8' src="https://space.marsit.uz/img/profile_logo.8dfe14fc.png" alt="" />
-                <p className='text-4xl mt-8 font-extrabold text-[#100D5D]'>Do'stlar</p>
+        <div className="container mx-auto px-8 py-8">
+            <h2 className="text-4xl flex justify-center items-center gap-4 font-extrabold mb-6 text-center font-poppins">
+                <img className='w-12' src="https://space.marsit.uz/img/profile_logo.8dfe14fc.png" alt="Profile" />
+                <p className='text-4xl font-extrabold text-[#100D5D]'>Do'stlar</p>
             </h2>
-            <div className="grid grid-cols-1 gap-6  mt-16">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-8">
                 {students.length > 0 ? (
                     students.map(student => (
-                        <div key={student.id} className="bg-white w-96 gap-7 p-6 rounded-lg shadow-lg flex items-center">
-                            <img src={student.image} alt={student.name} className="w-28 h-28 rounded-full mb-4 border-2 border-orange-500" />
-                            <div className="ml-4">
-                                <h3 className="text-xl font-bold">{student.name}</h3>
-                               <div className='flex flex-col w-36'>
-                               <p><strong>League:</strong> {student.league}</p>
-                               <p><strong>Group:</strong> {student.group}</p>
-                               </div>
+                        <div key={student.id} className="bg-white w-full max-w-xs mx-auto p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col items-center">
+                            <img src={student.image} alt={student.name} className="w-28 h-28 rounded-full mb-4 border-2 border-orange-500 object-cover" />
+                            <div className="text-center">
+                                <h3 className="text-xl font-bold mb-2">{student.name}</h3>
+                                <p className="text-gray-600"><strong>League:</strong> {student.league}</p>
+                                <p className="text-gray-600"><strong>Group:</strong> {student.group}</p>
                             </div>
                         </div>
                     ))
@@ -62,4 +60,4 @@ const StudentList = () => {
     );
 };
 
-export default StudentList;
+export default StudentListt;

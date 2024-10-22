@@ -14,7 +14,7 @@ const Swipper = () => {
 
     return (
         <Link to="/news">
-            <div className="carousel w-full h-[45vh] rounded-3xl">
+            <div className="carousel w-full rounded-3xl">
                 <div id="slide1" className={`carousel-item relative w-full ${currentSlide === 1 ? 'block' : 'hidden'}`}>
                     <img
                         src="https://lab.marsit.uz/media/news/Space_oktyabr_380x1050.png"

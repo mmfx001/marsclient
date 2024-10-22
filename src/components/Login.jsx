@@ -6,7 +6,7 @@ const Login = () => {
     const [name, setName] = useState('');
     const [password, setPassword] = useState('');
     const [message, setMessage] = useState('');
-
+    const [loading, setLoading] = useState(false); // Added loading state
     const navigate = useNavigate();
 
     const handleLogin = async (e) => {
@@ -19,7 +19,7 @@ const Login = () => {
             setMessage('Iltimos, ism va parolni to\'ldiring');
             return;
         }
-
+        setLoading(true); // Start loading
         try {
             const usersResponse = await axios.get('https://shoopjson-2.onrender.com/api/students');
             const users = usersResponse.data;
@@ -79,11 +79,19 @@ const Login = () => {
                             {message}
                         </p>
                     )}
-                    <button
+                   <button
                         type="submit"
-                        className="w-full bg-orange-600 text-white py-3 rounded-lg hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-red-500 transition duration-200"
+                        className={`w-full bg-orange-600 text-white py-3 rounded-lg ${loading ? 'opacity-50 cursor-not-allowed' : 'hover:bg-orange-700'} focus:outline-none focus:ring-2 focus:ring-red-500 transition duration-200`}
+                        disabled={loading}
                     >
-                        Kirish
+                        {loading ? (
+                            <svg className="animate-spin h-5 w-5 mx-auto text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8H4z"></path>
+                            </svg>
+                        ) : (
+                            'Kirish'
+                        )}
                     </button>
                 </form>
 

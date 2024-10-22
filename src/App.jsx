@@ -140,14 +140,15 @@ const App = () => {
                 </div>
 
                 {/* Yangiliklar qismi */}
-                <div className="w-full mt-14 lg:mt-0">
-                    <h2 className="text-4xl mt-[-30px] ml-[-890px] flex justify-center items-center text-[#100D5D] gap-4 font-extrabold mb-4 text-center font-poppins">
+                <div className="w-full mt-2 lg:mt-14">
+                    <h2 className="text-4xl lg:mt-[-30px] lg:ml-[-890px] flex justify-center items-center text-[#100D5D] gap-4 font-extrabold mb-4 text-center font-poppins">
                         <p className='text-4xl mt-8 font-extrabold'>Yangiliklar</p>
                     </h2>
                     <Swipper />
                     <CustomCard />
                     <Curs />
                 </div>
+
             </div>
             <div className='w-full'>
                 <RatingPage />
