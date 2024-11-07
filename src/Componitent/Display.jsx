@@ -103,8 +103,8 @@ const Display = () => {
         };
 
         try {
-            await axios.put(`http://localhost:5001/students/${user.id}`, updatedUser);
-            await axios.put(`http://localhost:5001/posts/${item.id}`, updatedItem);
+            await axios.put(`https://shoopjson-2.onrender.com/api/students/${user.id}`, updatedUser);
+            await axios.put(`https://shoopjson-2.onrender.com/api/posts/${item.id}`, updatedItem);
 
             setUsers((prevUsers) =>
                 prevUsers.map((u) =>

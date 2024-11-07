@@ -18,12 +18,13 @@ const Swipper = () => {
                 <div id="slide1" className={`carousel-item relative w-full ${currentSlide === 1 ? 'block' : 'hidden'}`}>
                     <img
                         src="https://lab.marsit.uz/media/news/Space_oktyabr_380x1050.png"
-                        className="w-full rounded-3xl" />
+                        className="w-full rounded-3xl" alt='Rasm' />
+                        
                 </div>
                 <div id="slide2" className={`carousel-item relative w-full ${currentSlide === 2 ? 'block' : 'hidden'}`}>
                     <img
                         src="https://lab.marsit.uz/media/news/880x300.png"
-                        className="w-full rounded-3xl" />
+                        className="w-full rounded-3xl" alt='rasm' />
                 </div>
             </div>
         </Link>
