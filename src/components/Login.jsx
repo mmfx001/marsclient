@@ -54,7 +54,7 @@ const Login = () => {
                 </div>                <form className="space-y-4" onSubmit={handleLogin}>
                     <input
                         type="text"
-                        placeholder="Ismingizni kiriting"
+                        placeholder="(dilbek)"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         className="w-full px-4 py-3 rounded-lg border text-black border-gray-300 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200"
@@ -62,7 +62,7 @@ const Login = () => {
                     <div className="relative">
                         <input
                             type="password"
-                            placeholder="Passwordni kiriting"
+                            placeholder="(1)"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             className="w-full px-4 py-3 rounded-lg border text-black border-gray-300 bg-white focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200"

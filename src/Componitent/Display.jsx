@@ -138,7 +138,7 @@ const Display = () => {
 
     const fetchComments = async (productId) => {
         try {
-            const response = await axios.get(`http://localhost:5001/comments?productId=${productId}`);
+            const response = await axios.get(`https://shoopjson-2.onrender.com/api/comments?productId=${productId}`);
             setComments(response.data);
         } catch (error) {
             console.error('Izohlarni olishda xatolik:', error);
