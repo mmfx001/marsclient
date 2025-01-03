@@ -24,7 +24,7 @@ const Login = () => {
             const usersResponse = await axios.get('https://shoopjson-2.onrender.com/api/students');
             const users = usersResponse.data;
             console.log(users);
-            const user = users.find(v => v.name === trimmedName && v.password === trimmedPassword);
+            const user = users.find(v => v.login === trimmedName && v.password === trimmedPassword);
             if (user) {
                 localStorage.setItem('loggedInUser', JSON.stringify(user));
                 navigate('/main'    );
